@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import io from 'socket.io-client';
 import axios from "axios";
+require('dotenv').config();
 
 export default function Home() {
   const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
-    const newSocket = io('https://komet-test-backend.vercel.app', { transports: ['websocket'] });
+    const newSocket = io(process.env.BASE_URL, { transports: ['websocket'] });
 
     newSocket.on('connect', () => {
       console.log("socket connected...");
@@ -29,7 +30,7 @@ export default function Home() {
   }, []);
 
   const showData = async () => {
-    await axios('https://komet-test-backend.vercel.app/get-trade-details');
+    await axios(`${process.env.BASE_URL}/get-trade-details`);
   }
 
   return (
