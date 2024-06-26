@@ -9,7 +9,7 @@ export default function Home() {
   const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
-    const newSocket = io(process.env.BASE_URL, { transports: ['websocket'] });
+    const newSocket = io(process.env.NEXT_PUBLIC_BASE_URL, { transports: ['websocket'] });
 
     newSocket.on('connect', () => {
       console.log("socket connected...");
@@ -30,7 +30,7 @@ export default function Home() {
   }, []);
 
   const showData = async () => {
-    await axios(`${process.env.BASE_URL}/get-trade-details`);
+    await axios(`${process.env.NEXT_PUBLIC_BASE_URL}/get-trade-details`);
   }
 
   return (
