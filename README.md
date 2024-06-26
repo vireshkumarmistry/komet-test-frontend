@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-- Node.js (version required)
+- Node.js (v20.14.0)
 - npm
 
 ### Install dependencies
